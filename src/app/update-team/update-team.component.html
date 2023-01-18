@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="row">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <div class="row">
+      <h3 class="text-center"> Update Team </h3>
+      <hr/>
+      <div class="card-body">
+        <form #teamForm="ngForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label> Name*</label>
+            <input required="true" minlength="1" type="text" class="form-control" id="name" [(ngModel)]="team.name"
+                   name="name" #name="ngModel">
+            <div *ngIf="name.invalid && (name.touched || name.dirty)">
+              <div class="alert alert-danger" *ngIf="name.errors?.['required']">
+                *Name is required!
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label> Founding Year</label>
+            <input type="number" class="form-control" id="foundingYear" [(ngModel)]="team.foundingYear"
+                   name="foundingYear">
+          </div>
+
+          <div class="form-group">
+            <label> Championship Wins</label>
+            <input type="number" class="form-control" id="championshipWins" [(ngModel)]="team.championshipWins"
+                   name="championshipWins">
+          </div>
+
+          <div class="form-group">
+            <label> Has paid the membership price: </label>
+            <input type="checkbox" class="" id="paidMembership" [(ngModel)]="team.paidMembership"
+                   name="paidMembership">
+          </div>
+          <br/>
+          <button class="btn btn-success" [disabled]="!teamForm.form.valid" type="submit">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-item">
+      <a routerLink="teams" routerLinkActive="active" class="nav-link" >Team List</a>
+    </li>
+    <li class = "nav-item">
+      <div *ngIf="isLoggedIn"><a routerLink="create-team" routerLinkActive="active" class="nav-link" >Add Team</a></div>
+    </li>
+    <li class = "nav-item">
+      <div *ngIf="!isLoggedIn"><a routerLink="login" routerLinkActive="active" class="nav-link" >Login</a></div>
+      <div *ngIf="isLoggedIn"><a routerLink="logout" (click)="handleLogout()" class="nav-link" >Logout</a></div>
+    </li>
+  </ul>
+</nav>
+
+<h1 class="text-center"> {{title}} </h1>
+<div class = "container">
+  <router-outlet></router-outlet>
+</div>
+<footer class = "footer">
+  <div class = "container">
+    <span>Bredex F1 Team test app</span>
+  </div>
+</footer>

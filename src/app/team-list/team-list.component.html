@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teams</title>
+</head>
+<body>
+<div class = "row">
+  <h2> Team List</h2>
+</div>
+
+<table class = "table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th> Team Name</th>
+    <th> Founding Year </th>
+    <th> Championship Wins</th>
+    <th> Has Paid for Membership </th>
+    <div *ngIf="appComponent.isLoggedIn"><th> Actions </th></div>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let team of teams" >
+    <td> {{ team.name }} </td>
+    <td> {{ team.foundingYear }} </td>
+    <td> {{ team.championshipWins }} </td>
+    <td><div *ngIf="team.paidMembership">✓</div></td>
+     <div *ngIf="appComponent.isLoggedIn">
+       <td>
+         <button (click) = "updateTeam(team.id)" class = "btn btn-primary"> Update</button>
+         <button (click) = "deleteTeam(team.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+       </td>
+     </div>
+   </tr>
+   </tbody>
+ </table>
+ </body>
+ </html>
